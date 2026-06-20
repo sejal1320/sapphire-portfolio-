@@ -94,7 +94,6 @@ header{
     justify-content: space-between;
     padding: 7%;
     gap: 3rem;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 .hero-content{
     flex: 1;
@@ -150,8 +149,7 @@ header{
 
 /*--About sectin--*/
 .about{
-    padding: 70px 8%;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 60px 8%;
     position: relative;
     overflow: hidden;
 }
@@ -159,6 +157,7 @@ header{
 .section-title{
     font-size: 2.5rem;
     text-align: center;
+    transform: translateY(-70px);
     margin-bottom: 70px;
     color: var(--bg-card);
     position: relative;
@@ -192,6 +191,7 @@ header{
     grid-template-columns: 1.5fr 1fr;
     gap: 150px;
     max-width: 1100px;
+    margin-top: -80px !important;
     margin: 0 auto;
     align-items: center;
     flex-wrap: wrap;
@@ -300,10 +300,14 @@ header{
 }
 
 /*  My Ventures */
+.ventures .section-title{
+    margin-bottom: 5px !important;
+}
+
 .ventures {
   padding: 70px 7%;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   position: relative;
+  margin-top: 40px !important;
   overflow: hidden;
 }
 
@@ -313,7 +317,6 @@ header{
   max-width: 1500px;
   margin: 0 auto;
   position: relative;
- 
   z-index: 1;
 }
 
@@ -373,7 +376,6 @@ border-color: var(--secondary-clr);
 
 #thalassic{
     padding: 80px 8%;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 #thalassic h2{
@@ -425,29 +427,29 @@ border-color: var(--secondary-clr);
     font-weight: bold;
     margin-right: 8px;
 }
-#thalassic ul:hover{
+.thalassic ul:hover{
    transform: translateY(-5px);
     transition: 0.3s ease;
     box-shadow: 0 15px 35px rgba(76,29,149,0.2);
 }
 
 /* Contact section */
-#contact {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 80px 20px;
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
+.contact {
+  padding: 100px;
+  scroll-margin-top: 80px;
 }
 
-#contact h2 {
+.contact h2 {
   text-align: center;
   font-size: 36px;
   font-weight: 700;
   color: var(--bg-card);
-  margin-bottom: 60px;
+  transform: translateY(-80px);
+  margin-bottom: 0px;
   position: relative;
 }
 
-#contact h2::after {
+.contact h2::after {
   content: '';
   width: 60px;
   height: 3px;
@@ -575,8 +577,8 @@ border-color: var(--secondary-clr);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 115, 230, 0.3);
 }
-body,section{
-    background: #f8f9fa;
+body{
+    background: #e2e8f0;
     background-image: none !important;
 }
 
