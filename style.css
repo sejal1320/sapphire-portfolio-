@@ -1,4 +1,5 @@
-*{
+*
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,7 +13,6 @@ html{
     --white-clr: #fff;
     --black-clr: #000;
     --light-black: #333;
-    --primary-clr: #4c1d95;
     --secondary-clr: #eee;
     --bg-card: #1a1a2e;
     --hover-button: #1e293b;
@@ -26,7 +26,9 @@ body{
     background: var(--secondary-clr);
 }
 
-/*--Navbar--*/
+/* ==========================
+   NAVBAR HOME
+========================== */
 header{
     background: var(--secondary-clr);
     padding: 1.2rem 5%;
@@ -96,18 +98,21 @@ header{
     gap: 3rem;
 }
 .hero-content{
-    flex: 1;
+    position: relative;
+    overflow: hidden;
 }
 
 
 .hero {
     position: relative;
-    overflow: hidden; /* Blob baher janar nahi */
 }
 
 .hero-img img{
     width: 500px;
     height: 500px;
+    position:  relative;
+    background-image: none;
+    pointer-events: none;
     border-radius: 50%;
     object-fit: cover;
     border: 8px solid var(--white-clr);
@@ -147,7 +152,70 @@ header{
     box-shadow: 0 5px 15px rgb(59,130,246,0.5);
 }
 
-/*--About sectin--*/
+/* ==========================
+   FOUNDER QUOTE
+========================== */
+.founder-quote{
+    position: relative;
+    max-width: 700px;
+    margin: 30px 0;
+    padding: 25px 30px;
+    background: rgba(147, 197,253,0.38);
+    backdrop-filter: blur(14px);
+    border-left: 5px solid var(--primary-clr);
+    border-radius: 15px;
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(40px);
+    animation: quoteFadeUp 1.2s ease forwards;
+}
+
+/* Moving Light Effect */
+.founder-quote::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+
+    animation: shine 4s infinite;
+}
+
+/* Quote Icon */
+
+.founder-quote i{
+    font-size: 2rem;
+    color: var(--bg-card);
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+.founder-quote p{
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-style: italic;
+    color: #462727;
+    margin-bottom: 12px;
+}
+
+.founder-quote span{
+    font-weight: 700;
+    color: var(--bg-card);
+    font-size: 1rem;
+}
+
+/* ==========================
+   ABOUT SECTION
+========================== */
 .about{
     padding: 60px 8%;
     position: relative;
@@ -157,33 +225,11 @@ header{
 .section-title{
     font-size: 2.5rem;
     text-align: center;
-    transform: translateY(-70px);
+    transform: translateY(-100px);
     margin-bottom: 70px;
     color: var(--bg-card);
     position: relative;
-    margin-top: 30px;
     font-weight: 700;
-}
-
-.section-title::before{
-    content: "";
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0; /* Start width 0 */
-    height: 4px;
-    background: var(--secondary-clr);
-    border-radius: 2px;
-    transition: width 2s ease-in-out; 
-}
-
-/* :active vala block full kadh. Page load var animation pahije na */
-.section-title:active::before{
-    width: 100px; 
-} 
-.section-title.active::before{
-    width: 100px;
 }
 
 .about-wrapper{
@@ -200,7 +246,7 @@ header{
 
 /*Main text card*/
 .about-card-main{
-    background: rgba(10,25,47,0.8);
+    background: var(--bg-card);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(100,255,218,0.1);
     border-radius: 16px;
@@ -222,7 +268,7 @@ header{
 
 .about-icon i{
     font-size: 1.8rem;
-    color: rgba(147, 197,253,1);
+    color: var(--text-clr);
 }
 
 .about-intro{
@@ -240,14 +286,14 @@ header{
 }
 
 .about-card-main span{
-    color: rgba(147,197,253,1);
-    font-weight: 600;
+    color: var(--text-clr);
+    font-weight: 600px;
 }
 
 .about-badge{
     display: inline-block;
-    background: rgba(100,255,218,0.1);
-    color: rgba(147, 197,253,1);
+    background: var(--bg-card);
+    color: var(--text-clr);
     padding: 10px 20px;
     border-radius: 25px;
     font-size: 0.95rem;
@@ -266,7 +312,7 @@ header{
 }
 
 .highlight-box{
-    background: rgba(10, 25,47,0.8);
+    background: var(--bg-card);
     border-radius: 12px;
     padding: 30px 20px;
     width: 200px;
@@ -282,7 +328,7 @@ header{
 }
 
 .highlight-box h3{
-    color: rgba(147, 197,253,1);
+    color: var(--text-clr);
     font-size: 2rem;
     margin: 0 0 5px 0;
 }
@@ -294,12 +340,14 @@ header{
 }
 
 .highlight-box i{
-    color: rgba(147, 197,253,1);
+    color: var(--text-clr);
     font-size: 2rem;
     margin-bottom: 10px;
 }
-
-/*  My Ventures */
+ 
+/* ==========================
+   MY VENTURES
+========================== */
 .ventures .section-title{
     margin-bottom: 5px !important;
 }
@@ -348,7 +396,7 @@ header{
   font-size: 1.3rem;
 }
 .timeline-item h3 .logo{
-    margin-left: 10px;
+    margin-left: 8px;
     vertical-align: middle;
     position: relative;
     top: -2px;
@@ -372,8 +420,128 @@ border-color: var(--secondary-clr);
     opacity: 1;
 }
 
-/* HARI OM THALASSIC */
+/*sapphire section*/
+.sapphire-section{
+    padding: 80px 20px;
+    background-size: cover;
+    margin-top: 3rem;
+}
 
+.sapphire-container{
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between;
+    gap: 400px;
+}
+
+/*Left-logo*/
+.sapphire-logo{
+    flex: 0 0 540px;
+    margin-top: 10px;
+    max-width: none;
+    margin-left: -130px;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.sapphire-logo img{
+    max-width: 100%;
+    height: auto;
+    font-display: block;
+    margin-top: 2rem;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+}
+
+/*Rigth info*/
+.sapphire-info{
+    flex: 1 1 0;
+    min-width: 450px;
+    text-align: left;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: -200px;
+}
+
+.sapphire-section > h2{
+    font-size: 40px;
+    position: relative;
+    letter-spacing: 1px;
+    z-index: 3;
+    width: 100%;
+    text-align: center;
+    color: var(--bg-card);
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.sapphire-info .dot{
+    margin-bottom: 16px;
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.sapphire-info .tagline{
+    display: inline-block;
+    padding: 10px 24px;
+    color: var(--text-clr);
+    border-radius: 50px;
+    letter-spacing: 1px;
+    font-size : 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border: 3px solid var(--bg-card);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3)  
+}
+
+.sapphire-info .desc{
+    color: var(--bg-card);
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+/*stats*/
+.sapphire-stats {
+  display: flex !important;
+  margin-top: 10px;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat h3 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.stat span {
+  display: block;
+  white-space: normal;
+  max-width: 100px; 
+  margin-top: 5px;
+  line-height: 1.3;
+}
+
+.btn1{
+    display: inline-block;
+    margin-top: 40px;
+    margin-left: 15px;
+    padding: 12px 30px;
+    background: var(--bg-card);   /*--button color change --*/
+    color: var(--white-clr);  /*--button text color change --*/
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.5s;
+}
+
+/* HARI OM THALASSIC */
 #thalassic{
     padding: 80px 8%;
 }
@@ -402,12 +570,13 @@ border-color: var(--secondary-clr);
 /* Box Styling */
 #thalassic ul{
     background: var(--bg-card);
-    padding: 30px;
+    padding: 25px 30px;
+    border-left: 4px solid var(--text-clr);
     border-radius: 16px;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
     list-style: none;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    border-left: 5px solid var(--text-clr);
+    transition: all 0.4s ease;
 }
 
 #thalassic ul li{
@@ -427,173 +596,460 @@ border-color: var(--secondary-clr);
     font-weight: bold;
     margin-right: 8px;
 }
-.thalassic ul:hover{
-   transform: translateY(-5px);
-    transition: 0.3s ease;
-    box-shadow: 0 15px 35px rgba(76,29,149,0.2);
+
+#thalassic ul:hover{
+    transform: translateY(-8px) scale(1.02);
+    border-left: 5px solid var(--text-clr); 
+    box-shadow: 0 15px 35px var(--text-clr);
 }
 
-/* Contact section */
-.contact {
-  padding: 100px;
-  scroll-margin-top: 80px;
+/* ==========================
+   CONTACT SECTION
+========================== */
+
+.contact{
+    padding: 100px 8%;
+     margin-top: -50px;
 }
 
-.contact h2 {
-  text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--bg-card);
-  transform: translateY(-80px);
-  margin-bottom: 0px;
-  position: relative;
+.contact h2{
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--bg-card);
+    margin-bottom: 50px;
 }
 
-.contact h2::after {
-  content: '';
-  width: 60px;
-  height: 3px;
-  background: var(--bg-card);
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 2px;
+/* Main Contact Card */
+
+.contact-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    background: #f5f5f5;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    align-items: center;
 }
 
-/* Grid layout */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  max-width: 1100px;
-  margin: 0 auto; /* auto  center align  */
-  padding: 60px 50px; 
-  background: var(--white-clr);/* card effect sathi */
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-  align-items: start;
+/* Left Side */
+
+.contact-info{
+    width: 100%;
 }
 
-/* Left side - Contact info */
-.contact-info p {
-  font-size: 17px;
-  color: #444;
-  margin: 18px 0;
-  line-height: 1.6;
-}
-
-.contact-info b {
-  color: var(--hover-button);
-  font-weight: 600;
-  font-size: 17px;
-  min-width: 80px;
-  display: inline-block;
-}
-.contact-info .fas{
-    gap: 2rem;
-} 
-
-/* Social icons */
-.social-icons {
-  margin-top: 30px;
-  display: flex;
-  gap: 12px;
-}
-
-.social-icons a {
-  display: inline-block;
-  margin-right: 22px;
-  font-size: 28px; 
-  color: #555;
-  transition: 0.3s;
-}
-
-.social-icons a:hover {
-  color: var(--bg-card);
-  transform: scale(1.2) translateY(-4px);
-}
-
-/* Right side - Form */
-.contact-form {
-  justify-self: end; /*  form right column rigth side */
-  max-width: 450px;
-  width: 100%;
+.contact-info p{
+    font-size: 17px;
+    margin-bottom: 20px;
+    color: #444;
 }
 
 .contact-info p i{
-    margin-right: 10px;
     color: var(--bg-card);
-    width: 20px;
+    margin-right: 12px;
+    width: 25px;
 }
 
-.contact-form h3 {
-  text-align: center; /* form heading center*/
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+.contact-info b{
+    color: var(--bg-card);
 }
 
-/* Form inputs */
+/* Social Icons */
+
+.social-icons{
+    display: flex;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.social-icons a{
+    font-size: 30px;
+    color: var(--bg-card);
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover{
+    transform: translateY(-6px) scale(1.1);
+}
+
+/* Right Side Form */
+
+.contact-form{
+    width: 100%;
+    max-width: 500px;
+    justify-self: end;
+}
+
+.contact-form h3{
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--bg-card);
+}
+
 .contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 18px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 15px;
-  font-family: inherit;
-  transition: 0.3s;
-  outline: none;
+.contact-form textarea{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 18px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
 }
 
 .contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--bg-card);
-  box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.1);
+.contact-form textarea:focus{
+    border-color: var(--primary-clr);
 }
 
-.contact-form textarea {
-  resize: vertical;
-  min-height: 120px;
+.contact-form textarea{
+    min-height: 130px;
+    resize: none;
 }
 
-.contact-form button {
-  width: 100%;
-  padding: 14px;
-  background: var(--bg-card);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
+.contact-form button{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--bg-card);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.contact-form button:hover {
-  background: var(--hover-button);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 115, 230, 0.3);
+.contact-form button:hover{
+    background: var(--hover-button);
+    transform: translateY(-2px);
 }
 body{
-    background: #e2e8f0;
-    background-image: none !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url('images/back.jpg')!important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 
-/* Mobile responsive */
+
+/* ==========================
+   ANIMATIONS
+========================== */
+/* quotes*/
+@keyframes quoteFadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }}
+
+@keyframes shine{
+    0%{
+        left:-150%;
+    }
+    100%{
+        left:150%;
+    }}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.15);
+    }}
+
+
+#home, #about, #myventures, #contact, .sapphire-section, #thalassic {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+/* using Observer 'show' class add  */
+#home.show, #about.show, #myventures.show, #contact.show, 
+.sapphire-section.show, #thalassic.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sapphire ani Hari Om stagger delay - one by one */
+.sapphire-section.show { transition-delay: 0.2s; }
+#thalassic.show { transition-delay: 0.5s; }
+
+
+#about h2.section-title,
+#myventures h2.section-title,
+#contact h2.section-title {
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 60px auto 40px auto !important;
+  position: relative;
+}
+
+/* for Line center */
+#about h2.section-title .underline,
+#myventures h2.section-title .underline,
+#contact h2.section-title .underline {
+  position: absolute;
+  bottom: -10px;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 0;
+  height: 4px;
+  background: var(--bg-card);
+  transition: width 1s ease-out;
+}
+
+#about h2.section-title.show .underline,
+#myventures h2.section-title.show .underline,
+#contact h2.section-title.show .underline {
+  width: 160px;
+}
+
+
+
+
+/* ==========================
+   MOBILE RESPONSIVE - 768px
+========================== */
 @media (max-width: 768px) {
-  #contact { padding: 60px 20px; }
-  #contact h2 { font-size: 28px; margin-bottom: 40px; }
-  .contact-grid { 
-    grid-template-columns: 1fr; 
-    gap: 40px;
-    padding: 40px 30px;
+  
+  /* Navbar */
+  header {
+    padding: 1rem 5%;
+    justify-content: space-between;
   }
-  .contact-info { text-align: center; }
-  .contact-form { justify-self: stretch; } /* mobile view full width */
-  .contact-form h3 { text-align: center; }
-  .contact-info b { min-width: auto; }
-  .social-icons a { margin: 0 10px; }
+  
+  .navlist {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    background: var(--bg-card);
+    width: 250px;
+    height: 100vh;
+    gap: 0;
+    padding-top: 50px;
+    transition: 0.3s;
+  }
+  
+  .navlist.active {
+    right: 0;
+  }
+  
+  .navlist li {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .navlist a {
+    color: var(--white-clr);
+    font-size: 1.2rem;
+  }
+  
+  .menu-btn {
+    display: block;
+    z-index: 101;
+  }
+
+  /* Hero Section */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 5%;
+    min-height: auto;
+    gap: 40px;
+  }
+  
+  .hero-img img {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .founder-quote {
+    padding: 20px 15px;
+    margin: 20px 0;
+  }
+
+  /* About Section */
+  .about {
+    padding: 50px 5%;
+  }
+  
+  .about-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 0 !important;
+  }
+  
+  .about-card-main {
+    width: 100%;
+    padding: 25px 20px;
+  }
+  
+  .about-highlights {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  .highlight-box {
+    width: 100%;
+    height: 130px;
+    padding: 20px 15px;
+  }
+
+  /* Ventures Timeline */
+  .ventures {
+    padding: 50px 5%;
+  }
+  
+  .timeline-item {
+    padding: 20px;
+  }
+  
+  .timeline-item h3 {
+    font-size: 1.1rem;
+  }
+  
+  .timeline-item h3 .logo {
+    width: 25px;
+    height: 30px;
+  }
+
+  /* Sapphire Section */
+  .sapphire-section {
+    padding: 50px 5%;
+  }
+  
+  .sapphire-container {
+    flex-direction: column !important;
+    gap: 40px !important;
+    align-items: center !important;
+  }
+  
+  .sapphire-logo {
+    flex: 0 0 auto !important;
+    margin-left: 0 !important;
+    max-width: 300px;
+    padding: 0;
+  }
+  
+  .sapphire-info {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    text-align: center;
+  }
+  
+  .sapphire-section > h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .sapphire-stats {
+    gap: 15px !important;
+    margin-top: 30px !important;
+  }
+  
+  .stat {
+    flex: 0 0 calc(50% - 8px);
+  }
+  
+  .stat h3 {
+    font-size: 24px;
+  }
+  
+  .btn1 {
+    margin-left: 0;
+  }
+
+  /* Thalassic Section */
+  #thalassic {
+    padding: 50px 5%;
+  }
+  
+  #thalassic h2 {
+    font-size: 28px;
+  }
+  
+  #thalassic ul {
+    padding: 20px 15px;
+  }
+  
+  #thalassic ul li {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+
+  /* Contact Section */
+  .contact {
+    padding: 50px 5%;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 30px 20px;
+  }
+  
+  .contact-form {
+    justify-self: stretch;
+    max-width: 100%;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+}
+
+/* ==========================
+   SMALL MOBILE - 480px
+========================== */
+@media (max-width: 480px) {
+  .hero-img img {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat {
+    flex: 0 0 100%;
+  }
+  
+  .sapphire-logo {
+    max-width: 250px;
+  }
 }
