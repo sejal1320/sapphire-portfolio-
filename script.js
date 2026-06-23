@@ -1,21 +1,3 @@
-
-// Mobile Menu Toggle
-const menuBtn = document.querySelector(".menu-btn");
-const navList = document.querySelector(".navlist");
-
-menuBtn.addEventListener("click", () => {
-    navList.classList.toggle("show");
-});
-
-
-// Close menu after clicking link
-document.querySelectorAll(".navlist a").forEach(link => {
-    link.addEventListener("click", () => {
-        navList.classList.remove("show");
-    });
-});
-
-
 // Active Navbar on Scroll
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".navlist a");
@@ -43,9 +25,6 @@ window.addEventListener("scroll", () => {
 
 });
 
-
-
-
 const text = "•Director • Founder of Sapphire Infotech Solutions";
 const typingText = document.querySelector(".hero-content p");
 
@@ -65,4 +44,58 @@ function typeEffect() {
 
 typeEffect();
 
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('#home, #about, #myventures, #contact, .sapphire-section, #thalassic');
 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        // Page var aala ki show add kar
+        entry.target.classList.add('show');
+      } else {
+        // After Page show removed - again animation
+        entry.target.classList.remove('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(section => observer.observe(section));
+}); 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('#home, #about, #myventures, #contact');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('show');
+        
+        // Section In .section-title show class 
+        const title = entry.target.querySelector('.section-title');
+        if(title) title.classList.add('show');
+      } else {
+        entry.target.classList.remove('show');
+        
+        const title = entry.target.querySelector('.section-title');
+        if(title) title.classList.remove('show');
+      }
+    });
+  }, { threshold: 0.3 }); // 30% showing animation start
+
+  sections.forEach(section => observer.observe(section));
+});
+
+// Mobile Menu Toggle
+const menuBtn = document.querySelector('.menu-btn');
+const navlist = document.querySelector('.navlist');
+
+menuBtn.addEventListener('click', () => {
+  navlist.classList.toggle('active');
+});
+
+// Link click on menu off
+document.querySelectorAll('.navlist a').forEach(link => {
+  link.addEventListener('click', () => {
+    navlist.classList.remove('active');
+  });
+});
